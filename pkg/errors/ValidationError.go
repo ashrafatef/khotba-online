@@ -7,8 +7,8 @@ import (
 
 type ValidationError struct {
 	Fields     []validation.ValidationError `json:"fields"`
-	Message    string                        `json:"message"`
-	StatusCode int                           `json:"status_code"`
+	Message    string                       `json:"message"`
+	StatusCode int                          `json:"statusCode"`
 }
 
 func NewValidationError(fields []validation.ValidationError) *ValidationError {

@@ -2,6 +2,7 @@ package emam
 
 import (
 	"khotba-online/internal/database/models"
+	"khotba-online/pkg/errors"
 
 	"gorm.io/gorm"
 )
@@ -37,12 +38,11 @@ func (r *EmamRepository) CreateEmam(emam CreateEmamAttrs) (models.Emam, error) {
 	return *createdEmam, nil
 }
 
-
 func (r *EmamRepository) GetEmamByEmail(email string) (models.Emam, error) {
 	var emam models.Emam
 	results := r.db.Where("email = ?", email).First(&emam).Error
 	if results != nil {
-		return models.Emam{}, results
+		return models.Emam{}, errors.NewNotFoundError("Emam not found")
 	}
 	return emam, nil
 }
