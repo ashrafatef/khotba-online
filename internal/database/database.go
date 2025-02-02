@@ -44,6 +44,7 @@ func New() *gorm.DB {
 		log.Fatal(err)
 	}
 	dbInstance.AutoMigrate(&models.Emam{})
+	dbInstance.AutoMigrate(&models.Masjed{})
 	return dbInstance
 }
 

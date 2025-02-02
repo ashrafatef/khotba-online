@@ -92,6 +92,7 @@ func (con *EmamController) Login(c *fiber.Ctx) error {
 		"exp": time.Now().Add(time.Hour * 24).Unix(), // Expires in 24 hours
 	})
 
+	// TODO: move to env
 	token, err := claims.SignedString([]byte("secret"))
 	if err != nil {
 		logrus.Println("Error generating token:", err)

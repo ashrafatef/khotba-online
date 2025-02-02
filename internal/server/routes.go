@@ -2,6 +2,7 @@ package server
 
 import (
 	"khotba-online/internal/modules/emam"
+	"khotba-online/internal/modules/masjeds"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -21,6 +22,7 @@ func (s *FiberServer) RegisterFiberRoutes() {
 
 	s.App.Get("/health", s.healthHandler)
 	emam.AddEmamRouters(s.App)
+	masjeds.SetupMasjedRoutes(s.App)
 }
 
 func (s *FiberServer) HelloWorldHandler(c *fiber.Ctx) error {
